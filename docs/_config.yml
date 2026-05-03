@@ -1,0 +1,77 @@
+title: 한투 API × n8n 주식 모니터링
+description: >-
+  한국투자증권 Open API와 n8n으로 만드는 주식 모니터링 자동화 커리큘럼.
+  토큰 발급부터 거래량 비율 분기, 디스코드·구글 시트 연동까지 7개 모듈로 구성됩니다.
+author: keerhee
+url: "https://keerhee.github.io"
+baseurl: "/kis-n8n-stock-monitor"
+lang: ko
+locale: ko_KR
+
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    block:
+      line_numbers: false
+  input: GFM
+  hard_wrap: false
+
+permalink: pretty
+
+include:
+  - _includes
+  - assets
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# 모듈 메뉴 정의 (네비게이션이 참조)
+modules:
+  - number: 0
+    title: "사전 준비"
+    permalink: /module-0/
+    file: 모듈0_사전준비.md
+    duration: "30분"
+  - number: 1
+    title: "API 신청과 인증 이해"
+    permalink: /module-1/
+    file: 모듈1_API신청과_인증이해.md
+    duration: "45분"
+  - number: 2
+    title: "토큰 자동 발급"
+    permalink: /module-2/
+    file: 모듈2_토큰자동발급.md
+    duration: "45분"
+  - number: 3
+    title: "현재가 시세 조회"
+    permalink: /module-3/
+    file: 모듈3_현재가시세조회.md
+    duration: "60분"
+  - number: 4
+    title: "기간별 시세와 평균거래량"
+    permalink: /module-4/
+    file: 모듈4_기간별시세_평균거래량.md
+    duration: "60분"
+  - number: 5
+    title: "거래량 비율 조건 분기"
+    permalink: /module-5/
+    file: 모듈5_거래량비율_조건분기.md
+    duration: "30분"
+  - number: 6
+    title: "디스코드 + 구글 시트 연동"
+    permalink: /module-6/
+    file: 모듈6_디스코드_구글시트_연동.md
+    duration: "60분"

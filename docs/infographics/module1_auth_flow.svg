@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" role="img" aria-label="API 인증 플로우">
+  <defs>
+    <marker id="arrow1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#0067ac"/>
+    </marker>
+    <filter id="s1"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.08"/></filter>
+  </defs>
+
+  <text x="400" y="32" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#1a2332">
+    한국투자증권 API 인증 4단계 플로우
+  </text>
+
+  <!-- 4 단계 박스 -->
+  <g font-family="system-ui">
+    <!-- 1. 신청 -->
+    <g filter="url(#s1)">
+      <rect x="40" y="80" width="160" height="120" rx="12" fill="#fff" stroke="#0067ac" stroke-width="2"/>
+      <circle cx="60" cy="100" r="14" fill="#0067ac"/>
+      <text x="60" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">1</text>
+      <text x="120" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2332">API 신청</text>
+      <text x="120" y="160" text-anchor="middle" font-size="11" fill="#5a6a7a">한투 API 포털 →</text>
+      <text x="120" y="175" text-anchor="middle" font-size="11" fill="#5a6a7a">앱 등록 → 발급</text>
+    </g>
+
+    <!-- 2. 키 보관 -->
+    <g filter="url(#s1)">
+      <rect x="240" y="80" width="160" height="120" rx="12" fill="#fff" stroke="#0067ac" stroke-width="2"/>
+      <circle cx="260" cy="100" r="14" fill="#0067ac"/>
+      <text x="260" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">2</text>
+      <text x="320" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2332">키 안전 보관</text>
+      <text x="320" y="160" text-anchor="middle" font-size="11" fill="#5a6a7a">App Key</text>
+      <text x="320" y="175" text-anchor="middle" font-size="11" fill="#5a6a7a">App Secret</text>
+    </g>
+
+    <!-- 3. 토큰 발급 -->
+    <g filter="url(#s1)">
+      <rect x="440" y="80" width="160" height="120" rx="12" fill="#fff" stroke="#3a6f9c" stroke-width="2"/>
+      <circle cx="460" cy="100" r="14" fill="#3a6f9c"/>
+      <text x="460" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">3</text>
+      <text x="520" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2332">토큰 발급</text>
+      <text x="520" y="160" text-anchor="middle" font-size="11" fill="#5a6a7a">POST /oauth2/tokenP</text>
+      <text x="520" y="175" text-anchor="middle" font-size="11" fill="#5a6a7a">→ access_token</text>
+    </g>
+
+    <!-- 4. API 호출 -->
+    <g filter="url(#s1)">
+      <rect x="640" y="80" width="160" height="120" rx="12" fill="#fff" stroke="#ea4b71" stroke-width="2"/>
+      <circle cx="660" cy="100" r="14" fill="#ea4b71"/>
+      <text x="660" y="105" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">4</text>
+      <text x="720" y="135" text-anchor="middle" font-size="14" font-weight="700" fill="#1a2332">API 호출</text>
+      <text x="720" y="160" text-anchor="middle" font-size="11" fill="#5a6a7a">Authorization 헤더</text>
+      <text x="720" y="175" text-anchor="middle" font-size="11" fill="#5a6a7a">+ TR ID</text>
+    </g>
+  </g>
+
+  <!-- 화살표 -->
+  <line x1="200" y1="140" x2="240" y2="140" stroke="#0067ac" stroke-width="2" marker-end="url(#arrow1)"/>
+  <line x1="400" y1="140" x2="440" y2="140" stroke="#0067ac" stroke-width="2" marker-end="url(#arrow1)"/>
+  <line x1="600" y1="140" x2="640" y2="140" stroke="#0067ac" stroke-width="2" marker-end="url(#arrow1)"/>
+
+  <!-- 토큰 라이프사이클 강조 -->
+  <g font-family="system-ui">
+    <rect x="40" y="250" width="720" height="120" rx="12" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <text x="400" y="278" text-anchor="middle" font-size="14" font-weight="700" fill="#92400e">⏰ 토큰 라이프사이클 (꼭 기억!)</text>
+    <text x="120" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2332">유효기간 24시간</text>
+    <text x="120" y="328" text-anchor="middle" font-size="11" fill="#5a6a7a">발급 후 정확히 1일</text>
+    <text x="120" y="346" text-anchor="middle" font-size="11" fill="#5a6a7a">만료 시 401 에러</text>
+
+    <text x="400" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2332">하루 1회 발급 권장</text>
+    <text x="400" y="328" text-anchor="middle" font-size="11" fill="#5a6a7a">남발 시 IP 차단</text>
+    <text x="400" y="346" text-anchor="middle" font-size="11" fill="#5a6a7a">→ n8n Schedule로 자동화</text>
+
+    <text x="680" y="310" text-anchor="middle" font-size="13" font-weight="700" fill="#1a2332">절대 노출 금지</text>
+    <text x="680" y="328" text-anchor="middle" font-size="11" fill="#5a6a7a">App Secret = 비밀번호</text>
+    <text x="680" y="346" text-anchor="middle" font-size="11" fill="#5a6a7a">credentials에 보관</text>
+  </g>
+</svg>

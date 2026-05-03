@@ -1,0 +1,97 @@
+---
+layout: default
+title: 한투 API × n8n 주식 모니터링 자동화 커리큘럼
+description: "한국투자증권 Open API와 n8n으로 만드는 주식 모니터링 자동화. 7개 모듈로 토큰 발급부터 디스코드·구글 시트 알림까지."
+permalink: /
+---
+
+<section class="hero">
+  <span class="hero-badge">🚀 무료 자율학습 커리큘럼</span>
+  <h1>
+    한투 API × n8n으로 만드는<br>
+    <span class="accent">주식 모니터링 자동화</span>
+  </h1>
+  <p>
+    한국투자증권 Open API와 n8n 워크플로우 자동화 도구를 결합해
+    <strong>토큰 자동 발급 → 시세 조회 → 거래량 분석 → 디스코드·구글 시트 알림</strong>까지
+    실전 자동화를 7개 모듈로 학습합니다.
+  </p>
+  <div class="hero-cta">
+    <a href="{{ '/module-0/' | relative_url }}" class="btn btn-primary">
+      📘 모듈 0부터 시작하기
+    </a>
+    <a href="{{ '/curriculum/' | relative_url }}" class="btn btn-secondary">
+      🗺️ 전체 커리큘럼 보기
+    </a>
+  </div>
+</section>
+
+<section style="padding: 24px 0;">
+  <div class="infographic-wrap">
+    <h3 style="margin-top:0; text-align:center; font-size:18px;">전체 학습 로드맵</h3>
+    {% include_relative infographics/roadmap.svg %}
+    <p class="infographic-caption">총 6시간 · 모듈 0부터 6까지 순차 진행 · 마지막엔 디스코드와 구글 시트로 자동 알림</p>
+  </div>
+</section>
+
+<section style="padding: 24px 0;">
+  <h2 style="font-size:24px; margin-bottom:8px;">📚 7개 학습 모듈</h2>
+  <p style="color: var(--text-soft); margin-bottom:24px;">각 카드를 클릭해 모듈을 시작하세요. 완료한 모듈은 자동으로 ✓ 표시됩니다.</p>
+
+  <div class="module-grid">
+    {% for m in site.modules %}
+    <a href="{{ m.permalink | relative_url }}" class="module-card" data-module="{{ m.number }}">
+      <span class="module-card-num">{{ m.number }}</span>
+      <h3>{{ m.title }}</h3>
+      <p>
+        {% case m.number %}
+          {% when 0 %}한투 계좌·n8n·디스코드·구글 4가지 환경을 미리 갖추는 사전 준비 단계.
+          {% when 1 %}한국투자증권 Open API 신청 절차와 OAuth 인증의 전체 흐름을 이해합니다.
+          {% when 2 %}n8n Schedule Trigger와 HTTP Request로 액세스 토큰을 자동 발급합니다.
+          {% when 3 %}발급한 토큰으로 종목 현재가를 조회하고 응답을 정제합니다.
+          {% when 4 %}기간별 시세 데이터에서 평균 거래량을 계산합니다 (JavaScript).
+          {% when 5 %}현재 거래량과 평균의 비율을 계산하고 IF 노드로 분기합니다.
+          {% when 6 %}이상 거래량 감지 시 디스코드 알림 + 구글 시트 자동 기록.
+        {% endcase %}
+      </p>
+      <div class="module-card-meta">
+        <span>⏱️ {{ m.duration }}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section style="padding: 32px 0;">
+  <h2 style="font-size:24px;">🎯 무엇을 만들 수 있게 되나요?</h2>
+  <ul style="font-size: 15px; line-height: 1.9;">
+    <li>새벽에 자동으로 한투 API 토큰을 발급받는 <strong>n8n 스케줄 워크플로</strong></li>
+    <li>관심 종목의 <strong>현재가·거래량을 주기적으로 수집</strong>하는 자동화</li>
+    <li><strong>거래량이 평균 대비 N배 이상</strong>일 때 디스코드 채널로 푸시 알림</li>
+    <li>모든 시세 스냅샷을 <strong>구글 시트에 자동 누적</strong>하여 백테스트 자료화</li>
+  </ul>
+</section>
+
+<section style="padding: 32px 0;">
+  <h2 style="font-size:24px;">📋 학습 전 체크리스트</h2>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+    <div style="padding: 16px; background: var(--bg-soft); border-radius: 10px; border: 1px solid var(--border);">
+      <strong>✅ n8n 기본 사용</strong>
+      <p style="font-size: 13px; color: var(--text-soft); margin: 4px 0 0;">노드 추가·연결, 워크플로 실행 경험</p>
+    </div>
+    <div style="padding: 16px; background: var(--bg-soft); border-radius: 10px; border: 1px solid var(--border);">
+      <strong>✅ 한투 계좌</strong>
+      <p style="font-size: 13px; color: var(--text-soft); margin: 4px 0 0;">실전 또는 모의투자 둘 다 OK</p>
+    </div>
+    <div style="padding: 16px; background: var(--bg-soft); border-radius: 10px; border: 1px solid var(--border);">
+      <strong>✅ 디스코드 + 구글</strong>
+      <p style="font-size: 13px; color: var(--text-soft); margin: 4px 0 0;">알림과 기록을 받을 채널·계정</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding: 32px 0; text-align: center;">
+  <a href="{{ '/module-0/' | relative_url }}" class="btn btn-primary" style="font-size: 17px; padding: 18px 36px;">
+    지금 시작하기 →
+  </a>
+</section>

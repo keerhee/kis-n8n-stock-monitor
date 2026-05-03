@@ -1,0 +1,48 @@
+<aside class="sidebar">
+  <div class="progress-card">
+    <div class="progress-label">
+      <span>전체 진도</span>
+      <span><span id="progress-count">0</span>/7</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <h4>학습 모듈</h4>
+  <ul class="sidebar-nav" id="sidebar-nav">
+    {% for m in site.modules %}
+    <li>
+      <a href="{{ m.permalink | relative_url }}"
+         data-module="{{ m.number }}"
+         {% if page.permalink == m.permalink %}class="active"{% endif %}>
+        <span class="num">{{ m.number }}</span>
+        <span>{{ m.title }}</span>
+        <span class="done-mark">✓</span>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  <h4>레퍼런스</h4>
+  <ul class="sidebar-nav">
+    <li>
+      <a href="{{ '/curriculum/' | relative_url }}" {% if page.permalink == '/curriculum/' %}class="active"{% endif %}>
+        <span class="num">📘</span>
+        <span>커리큘럼 전체</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://apiportal.koreainvestment.com/" target="_blank" rel="noopener">
+        <span class="num">🔗</span>
+        <span>한투 API 포털</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://docs.n8n.io/" target="_blank" rel="noopener">
+        <span class="num">🔗</span>
+        <span>n8n 공식 문서</span>
+      </a>
+    </li>
+  </ul>
+</aside>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" role="img" aria-label="거래량 비율 분기 플로우차트">
+  <defs>
+    <marker id="arr5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c84566"/>
+    </marker>
+  </defs>
+
+  <text x="400" y="30" text-anchor="middle" font-family="system-ui" font-size="16" font-weight="700" fill="#1a2332">
+    거래량 비율 계산 → IF 분기 플로우
+  </text>
+
+  <!-- Step 1 -->
+  <g font-family="system-ui">
+    <rect x="280" y="60" width="240" height="60" rx="10" fill="#fff" stroke="#c84566" stroke-width="2"/>
+    <text x="400" y="84" text-anchor="middle" font-size="13" font-weight="700" fill="#c84566">📊 입력 데이터</text>
+    <text x="400" y="104" text-anchor="middle" font-size="11" fill="#5a6a7a">현재거래량 (cur_vol) + 평균거래량 (avg_vol)</text>
+  </g>
+
+  <line x1="400" y1="120" x2="400" y2="150" stroke="#c84566" stroke-width="2" marker-end="url(#arr5)"/>
+
+  <!-- Step 2: ratio 계산 -->
+  <g font-family="system-ui">
+    <rect x="280" y="155" width="240" height="60" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <text x="400" y="179" text-anchor="middle" font-size="13" font-weight="700" fill="#92400e">✏️ Edit Fields (Set 노드)</text>
+    <text x="400" y="200" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#1a2332">ratio = cur_vol / avg_vol</text>
+  </g>
+
+  <line x1="400" y1="215" x2="400" y2="245" stroke="#c84566" stroke-width="2" marker-end="url(#arr5)"/>
+
+  <!-- Step 3: IF 노드 (마름모) -->
+  <g font-family="system-ui">
+    <polygon points="400,250 540,310 400,370 260,310" fill="#fff" stroke="#c84566" stroke-width="2.5"/>
+    <text x="400" y="305" text-anchor="middle" font-size="13" font-weight="700" fill="#c84566">🔀 IF 노드</text>
+    <text x="400" y="324" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#1a2332">ratio &gt;= 2.0 ?</text>
+  </g>
+
+  <!-- True 분기 -->
+  <line x1="540" y1="310" x2="610" y2="310" stroke="#ea4b71" stroke-width="2" marker-end="url(#arr5)"/>
+  <text x="575" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#ea4b71">TRUE</text>
+
+  <g font-family="system-ui">
+    <rect x="610" y="280" width="170" height="60" rx="10" fill="#fde7ed" stroke="#ea4b71" stroke-width="2"/>
+    <text x="695" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="#ea4b71">🚨 이상 거래</text>
+    <text x="695" y="324" text-anchor="middle" font-size="11" fill="#5a6a7a">→ 디스코드 알림 + 시트 기록</text>
+  </g>
+
+  <!-- False 분기 -->
+  <line x1="260" y1="310" x2="190" y2="310" stroke="#10b981" stroke-width="2" marker-end="url(#arr5)"/>
+  <text x="225" y="300" text-anchor="middle" font-size="11" font-weight="700" fill="#10b981">FALSE</text>
+
+  <g font-family="system-ui">
+    <rect x="20" y="280" width="170" height="60" rx="10" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="105" y="304" text-anchor="middle" font-size="12" font-weight="700" fill="#10b981">✓ 정상 거래</text>
+    <text x="105" y="324" text-anchor="middle" font-size="11" fill="#5a6a7a">→ 시트만 기록 (Quiet)</text>
+  </g>
+
+  <!-- 비율 임계값 가이드 -->
+  <g font-family="system-ui">
+    <rect x="40" y="395" width="720" height="55" rx="10" fill="#f7f9fc" stroke="#e3e8ef"/>
+    <text x="60" y="418" font-size="12" font-weight="700" fill="#1a2332">📌 임계값 가이드</text>
+    <g font-size="11" fill="#5a6a7a">
+      <text x="60" y="438">ratio &lt; 1.5 → 평소 수준</text>
+      <text x="220" y="438" fill="#f59e0b">ratio 1.5~2.0 → 주의</text>
+      <text x="370" y="438" fill="#ea4b71" font-weight="700">ratio ≥ 2.0 → 알림 발송</text>
+      <text x="540" y="438" fill="#dc2626" font-weight="700">ratio ≥ 5.0 → 급등·급락 의심</text>
+    </g>
+  </g>
+</svg>
